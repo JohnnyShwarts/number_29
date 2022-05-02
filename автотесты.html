@@ -1,0 +1,90 @@
+
+/s34lfgbj/Vadim/jjd909/12242kjkWpqc322823r23r3r457271evny - auth_token
+http://162.55.220.72:5005/get_test_user - ìåòîä post
+
+
+
+
+
+pm.test("Status code is 200", function () { // snippets: status code 200 
+    pm.response.to.have.status(200);
+});
+
+let item_1 = "Alex"
+
+pm.test("Item_1 Test", function () { // ñðàâíåíèå ïåðåìåííîé è ìàññèâà to.deep.equal("Alex")
+ pm.expect(item_1).to.deep.equal("Alex")
+
+});
+
+// body - pretty
+let person = {
+
+    "age": "30",
+    "family": {
+        "children": [
+            [
+                "Alex",
+                24
+            ],
+            [
+                "Kate",
+                12
+            ]
+        ],
+        "u_salary_1_5_year": 6000
+    },
+    "name": "Alex",
+    "salary": 1500
+}
+
+
+pm.test("Item_2 Test person", function () {  // ñðàâíåíèå ïàðàìåòðà (person.age) è çíà÷åíèÿ ("30")
+ pm.expect(person.age).to.deep.equal("30")
+
+});
+
+
+pm.test("Item_3 Person", function () { // ïðîâåðèòü ïåðâûé ýëåìåíò ïåðâîãî ìàññèâà (äîáèðàåìñÿ äî äàííûõ [1][1]...(12))
+pm.expect(person.family.children[1][1]).to.deep.equal(12)
+});
+
+pm.test("Item_4 Person", function () { // òåñò íà íàëè÷èå property (ïàðàìåòðà íàøåãî JSON - "name")
+pm.expect(person).to.have.property("name")
+});
+
+pm.test("Item_5 Person", function () { // ïðîâåðêà íà íàëè÷èå âñåãî ýëåìåíòà - ïðåäñòàâëåí salary": 1500
+pm.expect(person).to.deep.include({ "salary": 1500})
+});
+
+pm.test("Item_5_5 Person", function () { // ïðîâåðêà íàëè÷èÿ ÷èñëà â ìàññèâå (â äàííîì ñëó÷àå åëåìåíò 1 (èç 0) ÷èñëî 12)
+pm.expect(person.family.children[1]).to.deep.include(12)
+});
+
+pm.test("Item_6 Person", function () { // ïðîâåðêà íàëè÷èÿ ñòðèíãà â ìàññèâå (â äàííîì ñëó÷àå åëåìåíò 1 (èç 0) ñòðèíãà "Kate")
+pm.expect(person.family.children[1]).to.deep.include("Kate")
+});
+
+pm.test("Item_7 Person", function () { // ïðîâåðêà íà òèï äàííûõ - array (âñåãî ìàññèâû 0 è 1)
+pm.expect(person.family.children[1]).to.be.a("array")
+});
+
+pm.test("Item_7_1 Person", function () { // ïðîâåðêà íà êîíêðåòíûé ýëåìåíò (÷èñëî) â ìàññèâå
+pm.expect(person.family.children[1][1]).to.be.a("number")
+});
+
+pm.test("Item_7_2 Person", function () { // ïðîâåðêà ÷òî íóëåâîé ýëåìåíò ðàâåí ñòðèíãó
+pm.expect(person.family.children[1][0]).to.be.a("String")
+});
+
+pm.test("Item_7_3 Person", function () { // ïðîâåðêà ÷òî â ïàðàìåíòå name åñòü ñòðèíã, à èìåííî (Value ("Alex"))
+pm.expect(person.name).to.be.a("String")
+});
+
+pm.test("Item_8 Person", function () { // ïðîâåðêà ÿâëÿåòñÿ åëåìåíò ëè ìàññèâîì è ïî íîìåðó çíà÷åíèÿ
+pm.expect(person.family.children[1]).to.be.an("Array").that.include(12)
+});
+
+pm.test("Item_9 Person", function () {
+pm.expect(person.family.children[0]).to.eql(["Alex",24]) // ïðîâåðêà ðàâåí ëè åëåìåíò "children[0] ìàññèâó "Alex",24"
+});
