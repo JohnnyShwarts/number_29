@@ -1,0 +1,19 @@
+318  hystory
+  319  git history
+  320  history
+  321  ls -la
+  322  nano names.xml
+  323  nano names.txt
+  324  git status
+  325  git add . (добавили все файлы)
+  326  git status
+  327  git commit -m "add names.txt"
+  328  nano names.txt
+  329  nano names.txt
+  330  git status
+  331  git commit -am "add modify names.txt"
+  332  git push
+  333  git fetch
+  334  git pull
+  335  git fetch
+
