@@ -17,3 +17,11 @@
   334  git pull
   335  git fetch
 
+
+cd projects             # переход в папку projects, которая есть текущей папке
+cd /d/projects          # windows: переход в папку projects, расположенную по адресу D:/projects 
+cd /c/Program\ Files    # windows: переход в C/:Program Files 
+cd .                    # текущая директория
+cd ..                   # переход к родительской папке 
+cd ~                    # домашняя директория
+cd -                    # переход к последней рабочей папке
